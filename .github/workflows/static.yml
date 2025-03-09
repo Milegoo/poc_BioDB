@@ -29,8 +29,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22.14.0'
-        working-directory: ./poc-frontend  # Establecer el directorio de trabajo
-
+          
       - name: Install dependencies
         run: npm install
         working-directory: ./poc-frontend  # Establecer el directorio de trabajo
