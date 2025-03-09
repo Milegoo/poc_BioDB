@@ -23,30 +23,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
-      - name: Change directory to poc-frontend
-        run: cd poc-frontend
-        
-      # Configurar Node.js y dependencias
+
+      # Configurar Node.js y dependencias en la carpeta poc-frontend
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.14.0' 
-          
+          node-version: '22.14.0'
+        working-directory: ./poc-frontend  # Establecer el directorio de trabajo
+
       - name: Install dependencies
         run: npm install
-        
-      - name: Build the app
-        run: npm run build
+        working-directory: ./poc-frontend  # Establecer el directorio de trabajo
 
+      - name: Build the app
+        run: npm run build  # Cambia de 'dev' a 'build' para la producción
+        working-directory: ./poc-frontend  # Establecer el directorio de trabajo
+
+      # Configurar Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Subir el artefacto (apuntar a la carpeta donde está el index.html)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './poc-frontend'
-          
+          path: './poc-frontend/dist'  # Apunta a la carpeta donde está el index.html
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
