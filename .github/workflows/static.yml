@@ -28,10 +28,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.14.0'  # O la versión que necesites
-
+          node-version: '22.14.0' 
+          
+      - name: Install dependencies
+        run: npm install
+        
       - name: Build the app
-        run: npm run dev  # Este paso depende de cómo construyes tu proyecto
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -39,8 +42,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './poc-frontend/dist'  # Asegúrate de que este sea el directorio donde se generan los archivos estáticos
-
+          path: './poc-frontend'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
