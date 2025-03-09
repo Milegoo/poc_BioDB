@@ -46,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './poc-frontend/dist'  # Apunta a la carpeta donde está el index.html
+          path: './poc-frontend'
 
       - name: Deploy to GitHub Pages
         id: deployment
