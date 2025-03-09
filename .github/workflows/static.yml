@@ -23,7 +23,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+        
+      - name: Change directory to poc-frontend
+        run: cd poc-frontend
+        
       # Configurar Node.js y dependencias
       - name: Set up Node.js
         uses: actions/setup-node@v3
